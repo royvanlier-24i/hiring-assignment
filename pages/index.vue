@@ -2,10 +2,7 @@
   <v-layout>
     <v-flex>
       <h2>Popular movies</h2>
-      <tfi-media-carousel
-        :items="popularMovies"
-        title-attribute="title"
-      ></tfi-media-carousel>
+      <tfi-media-carousel :items="popularMovies"></tfi-media-carousel>
       <h2>Popular series</h2>
       <tfi-media-carousel
         :items="popularSeries"

@@ -1,8 +1,8 @@
 <template>
   <v-app dark>
-    <v-app-bar :clipped-left="clipped" fixed app></v-app-bar>
     <v-content>
       <v-container grid-list-lg>
+        <tfi-header />
         <nuxt />
       </v-container>
     </v-content>
@@ -10,7 +10,13 @@
 </template>
 
 <script>
+import TfiHeader from '~/components/Header.vue'
+
 export default {
+  components: {
+    TfiHeader
+  },
+
   data() {
     return {
       clipped: false,
@@ -36,3 +42,5 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" src="./scss/_default.scss"></style>

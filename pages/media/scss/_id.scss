@@ -1,0 +1,22 @@
+@import '~vuetify/src/styles/settings/_variables';
+
+.tfi-visual__spacer {
+  margin-bottom: 40px;
+  margin-top: 10px;
+
+  @media #{map-get($display-breakpoints, 'sm-and-up')} {
+    display: none;
+  }
+}
+
+.tfi-visual__image {
+  width: 100%;
+}
+
+.tfi-specs {
+  margin-top: 20px;
+}
+
+.tfi-trailer-trigger {
+  margin-top: 20px;
+}

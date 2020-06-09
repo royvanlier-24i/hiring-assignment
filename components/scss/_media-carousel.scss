@@ -1,0 +1,61 @@
+@import '~vuetify/src/styles/settings/_variables';
+
+.tfi-media-carousel-container {
+  width: 100%;
+}
+
+.tfi-media-carousel__slide {
+  padding-right: 10px;
+  position: relative;
+
+  &:hover {
+    .tfi-media-carousel__title {
+      transform: translateY(0);
+      transition: transform 0.15s ease-in-out 0.1s;
+    }
+  }
+}
+
+.tfi-media-carousel__image {
+  background-position: center;
+  background-size: cover;
+  height: 65vw;
+  width: 100%;
+
+  @media #{map-get($display-breakpoints, 'sm-and-up')} {
+    height: 33vw;
+  }
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    height: 204px;
+  }
+
+  @media #{map-get($display-breakpoints, 'xl-only')} {
+    height: 316px;
+  }
+}
+
+.tfi-media-carousel__title {
+  background-color: #000;
+  bottom: 0;
+  color: #eddddd;
+  left: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+  position: absolute;
+  transform: translateY(calc(100% + 20px));
+  transition: transform 0.5s ease-in-out;
+  width: calc(100% - 10px);
+
+  &::before {
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    content: '';
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    width: 100%;
+  }
+}

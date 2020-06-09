@@ -1,0 +1,17 @@
+dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+dt {
+  font-weight: bold;
+  padding-right: 20px;
+
+  &::after {
+    content: ':';
+  }
+}
+
+dd {
+  min-width: 0;
+}

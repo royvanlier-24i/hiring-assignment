@@ -24,12 +24,15 @@
         >
           <div
             class="tfi-media-carousel__image"
+            :class="
+              item.poster_path ? '' : 'tfi-media-carousel__image--no-image'
+            "
             :style="
-              item.poster_path
-                ? 'background-image:url(https://image.tmdb.org/t/p/w342' +
-                  item.poster_path +
-                  ')'
-                : ''
+              'background-image:url(' +
+                (item.poster_path
+                  ? 'https://image.tmdb.org/t/p/w342' + item.poster_path
+                  : '/no-image-available.png') +
+                ')'
             "
           ></div>
           <div class="tfi-media-carousel__title">

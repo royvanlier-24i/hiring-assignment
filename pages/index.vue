@@ -26,19 +26,24 @@ export default {
   },
 
   async asyncData({ $axios, $payloadURL, route, payload }) {
+    // Get popular movies from api
     const postPopularMovies = await $axios.$get(
       'movie/popular?api_key=' + process.env.API_KEY
     )
+    // Get popular series from api
     const postPopularSeries = await $axios.$get(
       'tv/popular?api_key=' + process.env.API_KEY
     )
+    // Get movies from family genre
     const postGenreFamily = await $axios.$get(
       'discover/movie?with_genres=10751&api_key=' + process.env.API_KEY
     )
+    // Get movies from documentary genre
     const postGenreDocumentary = await $axios.$get(
       'discover/movie?with_genres=99&api_key=' + process.env.API_KEY
     )
 
+    // Return all the results
     return {
       popularMovies: postPopularMovies.results,
       popularSeries: postPopularSeries.results,

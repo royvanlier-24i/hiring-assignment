@@ -33,7 +33,7 @@
             "
           ></div>
           <div class="tfi-media-carousel__title">
-            {{ item[titleAttribute] }}
+            {{ item[titleProperty] }}
           </div>
         </slide>
       </carousel>
@@ -42,27 +42,45 @@
 </template>
 
 <script>
+/**
+ * The carousel for displaying movies and tv series.
+ * @displayName Media Carousel
+ */
 export default {
   name: 'TfiMediaCarousel',
 
   props: {
+    /**
+     * The items to be displayed in the carousel.
+     */
     items: {
       type: Array,
       default() {
         return []
       }
     },
+    /**
+     * The type of items to be displayed in the carousel.
+     * @values movie, tv
+     */
     type: {
       type: String,
       default: 'movie'
     },
-    titleAttribute: {
+    /**
+     * The name of the property that contains the title of the movie or tv serie.
+     */
+    titleProperty: {
       type: String,
       default: 'title'
     }
   },
 
   methods: {
+    /**
+     * Navigate to the detail page of the item that was clicked
+     * @param {Object} dataset
+     */
     goToDetailPage(dataset) {
       this.$router.push('/media/' + dataset.id + '?type=' + this.type)
     }

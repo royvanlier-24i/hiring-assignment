@@ -38,6 +38,9 @@ export default {
   },
 
   methods: {
+    /**
+     * Search for movies based on text entered by the user
+     */
     search() {
       this.$axios
         .get(

@@ -98,11 +98,11 @@ export default {
   },
 
   mounted() {
-    this.initApp()
+    this.initShaka()
   },
 
   methods: {
-    initApp() {
+    initShaka() {
       // Install built-in polyfills to patch browser incompatibilities.
       window.shaka.polyfill.installAll()
 

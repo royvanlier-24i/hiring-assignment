@@ -26,7 +26,7 @@
             class="tfi-media-carousel__image"
             :style="
               item.poster_path
-                ? 'background-image:url(http://image.tmdb.org/t/p/w342' +
+                ? 'background-image:url(https://image.tmdb.org/t/p/w342' +
                   item.poster_path +
                   ')'
                 : ''

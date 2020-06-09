@@ -26,23 +26,6 @@ export default {
   },
 
   async asyncData({ $axios, $payloadURL, route, payload }) {
-    // When generating the app, if payload from running nuxt generate is available then use it
-    if (payload) {
-      return {
-        popularMovies: payload.popularMovies,
-        popularSeries: payload.popularSeries,
-        genreFamily: payload.genreFamily,
-        genreDocumentary: payload.genreDocumentary
-      }
-    }
-
-    // In production, if generated and works as client navigation, fetch previously saved static JSON payload
-    if (process.static && process.client) {
-      const payload = await $axios.$get($payloadURL(route))
-      return payload
-    }
-
-    // When developing, fetch the data
     const postPopularMovies = await $axios.$get(
       'movie/popular?api_key=' + process.env.API_KEY
     )

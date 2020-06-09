@@ -78,20 +78,6 @@ export default {
   components: {},
 
   async asyncData({ $axios, $payloadURL, route, payload }) {
-    // When generating the app, if payload from running nuxt generate is available then use it
-    if (payload) {
-      return {
-        details: payload
-      }
-    }
-
-    // In production, if generated and works as client navigation, fetch previously saved static JSON payload
-    if (process.static && process.client) {
-      const payload = await $axios.$get($payloadURL(route))
-      return payload
-    }
-
-    // When developing, fetch the data
     const postDetails = await $axios.$get(
       route.query.type +
         '/' +

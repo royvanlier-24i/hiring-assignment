@@ -11,7 +11,13 @@
         <v-btn @click="search">Go</v-btn>
       </v-card>
       <h2 class="tfi-search-results-header">Search results</h2>
-      <tfi-media-carousel :items="searchResults"></tfi-media-carousel>
+      <tfi-media-carousel
+        v-show="searchResults.length > 0"
+        :items="searchResults"
+      ></tfi-media-carousel>
+      <p v-show="searchResults.length === 0">
+        No items found
+      </p>
     </v-flex>
   </v-layout>
 </template>

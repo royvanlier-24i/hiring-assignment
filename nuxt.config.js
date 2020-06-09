@@ -18,6 +18,11 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
+    script: [
+      {
+        src: '/shaka-player.compiled.js'
+      }
+    ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
@@ -27,9 +32,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [
-    '@/assets/scss/main.scss'
-  ],
+  css: ['@/assets/scss/main.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -37,7 +40,7 @@ export default {
     {
       src: '~/plugins/carousel.js',
       mode: 'client'
-    },
+    }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -57,7 +60,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/toast'
   ],
   /*
    ** Axios module configuration
@@ -91,6 +95,14 @@ export default {
         }
       }
     }
+  },
+  /*
+   ** Toast configuration
+   ** https://github.com/nuxt-community/modules/tree/master/packages/toast
+   */
+  toast: {
+    duration: 6000,
+    position: 'top-right'
   },
   /*
    ** Build configuration

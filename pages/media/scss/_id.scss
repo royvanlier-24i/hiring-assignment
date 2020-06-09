@@ -1,5 +1,9 @@
 @import '~vuetify/src/styles/settings/_variables';
 
+.tfi-visual {
+  position: relative;
+}
+
 .tfi-visual__spacer {
   margin-bottom: 40px;
   margin-top: 10px;
@@ -19,4 +23,8 @@
 
 .tfi-trailer-trigger {
   margin-top: 20px;
+}
+
+.tfi-video__player {
+  outline: none;
 }

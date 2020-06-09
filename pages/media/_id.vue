@@ -44,11 +44,13 @@
             <dd>{{ details.vote_average }}</dd>
           </dl>
         </div>
-        <v-btn color="primary" class="tfi-trailer-trigger">View trailer</v-btn>
+        <v-btn color="primary" class="tfi-trailer-trigger" @click="viewTrailer"
+          >View trailer</v-btn
+        >
       </div>
     </v-flex>
     <v-flex xs12 sm6 offset-sm1>
-      <div class="tfi-visual">
+      <div v-show="!showTrailer" class="tfi-visual">
         <div class="tfi-visual__spacer">
           <hr />
         </div>
@@ -56,6 +58,16 @@
           class="tfi-visual__image"
           :src="'http://image.tmdb.org/t/p/w342' + details.poster_path"
         />
+      </div>
+      <div v-show="showTrailer" class="tfi-video">
+        <video
+          id="video"
+          class="tfi-video__player"
+          width="100%"
+          :poster="'http://image.tmdb.org/t/p/w342' + details.poster_path"
+          controls
+          autoplay
+        ></video>
       </div>
     </v-flex>
   </v-layout>
@@ -90,6 +102,68 @@ export default {
 
     return {
       details: postDetails
+    }
+  },
+
+  data() {
+    return {
+      showTrailer: false
+    }
+  },
+
+  mounted() {
+    this.initApp()
+  },
+
+  methods: {
+    initApp() {
+      // Install built-in polyfills to patch browser incompatibilities.
+      window.shaka.polyfill.installAll()
+
+      // Check to see if the browser supports the basic APIs Shaka needs.
+      if (window.shaka.Player.isBrowserSupported()) {
+        // Everything looks good!
+        this.initPlayer()
+      } else {
+        // This browser does not have the minimum set of APIs we need.
+        this.$toast.error('Browser not supported!')
+      }
+    },
+
+    initPlayer() {
+      // Create a Player instance.
+      const video = document.getElementById('video')
+      const player = new window.shaka.Player(video)
+
+      // Attach player to the window to make it easy to access in the JS console.
+      window.player = player
+
+      // Listen for error events.
+      player.addEventListener('error', this.onErrorEvent)
+    },
+
+    onErrorEvent(event) {
+      // Extract the shaka.util.Error object from the event.
+      this.onError(event.detail)
+    },
+
+    onError(error) {
+      this.$toast.error(error.code)
+    },
+
+    viewTrailer() {
+      this.showTrailer = true
+
+      // Try to load a manifest.
+      // This is an asynchronous process.
+      window.player
+        .load(
+          'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+        )
+        .then(function() {
+          // This runs if the asynchronous load is successful.
+        })
+        .catch(this.onError.bind(this))
     }
   }
 }

@@ -4,6 +4,13 @@ require('dotenv').config()
 export default {
   mode: 'universal',
   /*
+   ** Environment variables
+   */
+  env: {
+    API_URL: process.env.API_URL,
+    API_KEY: process.env.API_KEY
+  },
+  /*
    ** Headers of the page
    */
   head: {

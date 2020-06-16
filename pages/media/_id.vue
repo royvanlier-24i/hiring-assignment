@@ -56,7 +56,7 @@
         </div>
         <img
           class="tfi-visual__image"
-          :src="'http://image.tmdb.org/t/p/w342' + details.poster_path"
+          :src="`http://image.tmdb.org/t/p/w342${details.poster_path}`"
         />
       </div>
       <div v-show="showTrailer" class="tfi-video">
@@ -64,7 +64,7 @@
           id="video"
           class="tfi-video__player"
           width="100%"
-          :poster="'http://image.tmdb.org/t/p/w342' + details.poster_path"
+          :poster="`http://image.tmdb.org/t/p/w342${details.poster_path}`"
           controls
           autoplay
         ></video>
@@ -79,11 +79,7 @@ export default {
 
   async asyncData({ $axios, $payloadURL, route, payload }) {
     const postDetails = await $axios.$get(
-      route.query.type +
-        '/' +
-        route.params.id +
-        '?api_key=' +
-        process.env.API_KEY
+      `${route.query.type}/${route.params.id}?api_key=${process.env.API_KEY}`
     )
 
     return {

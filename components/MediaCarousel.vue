@@ -28,11 +28,11 @@
               item.poster_path ? '' : 'tfi-media-carousel__image--no-image'
             "
             :style="
-              'background-image:url(' +
-                (item.poster_path
-                  ? 'https://image.tmdb.org/t/p/w342' + item.poster_path
-                  : '/no-image-available.png') +
-                ')'
+              `background-image:url(${
+                item.poster_path
+                  ? `https://image.tmdb.org/t/p/w342${item.poster_path}`
+                  : '/no-image-available.png'
+              })`
             "
           ></div>
           <div class="tfi-media-carousel__title">
@@ -85,7 +85,7 @@ export default {
      * @param {Object} dataset
      */
     goToDetailPage(dataset) {
-      this.$router.push('/media/' + dataset.id + '?type=' + this.type)
+      this.$router.push(`/media/${dataset.id}?type=${this.type}`)
     }
   }
 }

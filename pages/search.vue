@@ -44,10 +44,7 @@ export default {
     search() {
       this.$axios
         .get(
-          'https://api.themoviedb.org/3/search/movie?api_key=' +
-            process.env.API_KEY +
-            '&query=' +
-            this.query
+          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${this.query}`
         )
         .then(
           function(response) {

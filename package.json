@@ -26,7 +26,7 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "@nuxtjs/toast": "^3.3.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^3.4.3",
     "shaka-player": "^3.0.0",
     "vue-carousel": "^0.18.0"
   },
